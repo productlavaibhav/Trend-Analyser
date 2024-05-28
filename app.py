@@ -17,7 +17,6 @@ candlestick_patterns = [
 # Function to analyze candlestick pattern
 def analyze_candlestick(image, selected_pattern):
     # Placeholder for candlestick pattern analysis logic
-    # In a real application, this function would contain the actual pattern recognition logic.
     correct = np.random.choice([True, False])
     return correct
 
@@ -39,7 +38,7 @@ def main():
         st.image(image_array, caption="Uploaded Image", use_column_width=True)
 
         # Dropdown for candlestick patterns
-        selected_pattern = st.selectbox("Choose your answer", ["Choose your answer"] + candlestick_patterns, index=0)
+        selected_pattern = st.selectbox("Choose your answer", ["Choose your answer"] + candlestick_patterns)
 
         # Button to analyze pattern
         if selected_pattern != "Choose your answer":
