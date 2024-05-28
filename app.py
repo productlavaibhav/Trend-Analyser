@@ -17,11 +17,15 @@ candlestick_patterns = [
 # Function to analyze candlestick pattern
 def analyze_candlestick(image, selected_pattern):
     # Placeholder for candlestick pattern analysis logic
+    # In a real application, this function would contain the actual pattern recognition logic.
     correct = np.random.choice([True, False])
     return correct
 
 def main():
     st.header("Candlestick Pattern Recognition")
+
+    # Main Menu Button
+    st.sidebar.button("Back to Main Menu", on_click=st.experimental_rerun)
 
     # Upload image
     uploaded_image = st.file_uploader("Upload image", type=["jpg", "jpeg", "png"])
@@ -34,9 +38,9 @@ def main():
         # Display uploaded image
         st.image(image_array, caption="Uploaded Image", use_column_width=True)
 
-        # Dropdown for candlestick patterns appears only after an image is uploaded
-        selected_pattern = st.selectbox("Choose your answer", ["Choose your answer"] + candlestick_patterns)
-        
+        # Dropdown for candlestick patterns
+        selected_pattern = st.selectbox("Choose your answer", ["Choose your answer"] + candlestick_patterns, index=0)
+
         # Button to analyze pattern
         if selected_pattern != "Choose your answer":
             if st.button("Check my answer"):
@@ -46,11 +50,6 @@ def main():
                 else:
                     hint = f"It doesn't look like a {selected_pattern}. Check for unique features of the pattern."
                     st.error(f"Your analysis is not quite right. Hint: {hint}")
-
-    # Button to reset the app to the main menu
-    if st.button("Back to Main Menu"):
-        # Reset the app
-        st.experimental_rerun()
 
 if __name__ == "__main__":
     main()
