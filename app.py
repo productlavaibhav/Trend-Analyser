@@ -34,8 +34,13 @@ def main():
         # Display uploaded image
         st.image(image_array, caption="Uploaded Image", use_column_width=True)
 
-        # Dropdown for candlestick patterns after image is uploaded
+        # Initialize session state for pattern selection
+        if 'selected_pattern' not in st.session_state:
+            st.session_state['selected_pattern'] = "Select a pattern..."
+
+        # Dropdown to choose candlestick pattern only after image is uploaded
         selected_pattern = st.selectbox("Choose your answer", ["Select a pattern..."] + candlestick_patterns)
+        st.session_state['selected_pattern'] = selected_pattern
 
         # Check if a valid pattern is selected before showing the button
         if selected_pattern != "Select a pattern...":
@@ -51,6 +56,9 @@ def main():
 
     # Button to reset the app to the main menu
     if st.button("Back to Main Menu"):
+        # Clear session state to reset the app
+        for key in list(st.session_state.keys()):
+            del st.session_state[key]
         st.experimental_rerun()
 
 if __name__ == "__main__":
