@@ -37,8 +37,9 @@ def main():
         # Display uploaded image
         st.image(image_array, caption="Uploaded Image", use_column_width=True)
 
-        # Dropdown for candlestick patterns
-        selected_pattern = st.selectbox("Choose your answer", ["Choose your answer"] + candlestick_patterns)
+        # Dropdown for candlestick patterns - Modified to use a separate list for the dropdown
+        dropdown_options = ["Choose your answer"] + candlestick_patterns
+        selected_pattern = st.selectbox("Choose your answer", dropdown_options, index=0) 
 
         # Button to analyze pattern
         if selected_pattern != "Choose your answer":
